@@ -1,5 +1,5 @@
 {
-  "sublog.chat.warn": "[SubLog] You have %1$s one-time passes left. %2$s to generate a token or you may lose access to the server.",
+  "sublog.chat.warn": "You have %1$s one-time passes left. %2$s to generate a token or you may lose access to the server.",
   "sublog.chat.click": "Click here",
   "sublog.enabled": "Enable SubLog",
   "sublog.dialog.title": "Token generated",

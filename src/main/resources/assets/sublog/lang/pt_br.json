@@ -1,5 +1,5 @@
 {
-  "sublog.chat.warn": "[SubLog] Você possui %1$s passes de uso único restantes. %2$s para gerar um token ou você poderá perder acesso ao servidor.",
+  "sublog.chat.warn": "Você possui %1$s passes de uso único restantes. %2$s para gerar um token ou você poderá perder acesso ao servidor.",
   "sublog.chat.click": "Clique aqui",
   "sublog.enabled": "Habilitar SubLog",
   "sublog.dialog.title": "Token gerado",
