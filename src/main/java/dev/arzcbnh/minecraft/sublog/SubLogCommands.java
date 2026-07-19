@@ -4,8 +4,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import dev.arzcbnh.minecraft.sublog.pass.PassSavedData;
-import dev.arzcbnh.minecraft.sublog.token.TokenSavedData;
 import java.util.Objects;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandBuildContext;
@@ -15,12 +13,14 @@ import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.permissions.Permissions;
 
+@SuppressWarnings("SameReturnValue")
 public class SubLogCommands {
-    public static void init() {
-        CommandRegistrationCallback.EVENT.register(SubLogCommands::register);
+    public static void register() {
+        CommandRegistrationCallback.EVENT.register(SubLogCommands::dispatch);
     }
 
-    private static void register(
+    @SuppressWarnings("unused")
+    private static void dispatch(
             CommandDispatcher<CommandSourceStack> dispatcher,
             CommandBuildContext buildContext,
             Commands.CommandSelection selection) {
@@ -49,35 +49,38 @@ public class SubLogCommands {
     }
 
     private static int generateTokenCallback(CommandContext<CommandSourceStack> context) {
-        SubLog.registerPlayer(Objects.requireNonNull(context.getSource().getPlayer()));
+        final var source = context.getSource();
+        final var server = source.getServer();
+        final var player = Objects.requireNonNull(source.getPlayer());
+        SubLogServerContext.get(server).registration().register(player);
         return 1;
     }
 
     private static int revokeTokenCallback(CommandContext<CommandSourceStack> context) {
         final var source = context.getSource();
+        final var server = source.getServer();
         final var name = StringArgumentType.getString(context, "player");
         final var uuid = UUIDUtil.createOfflinePlayerUUID(name);
-
-        TokenSavedData.getInstance(source.getServer()).setToken(uuid, null);
+        SubLogServerContext.get(server).tokens().revoke(uuid);
         source.sendSuccess(() -> Component.translatable("sublog.success.revoke", name), true);
         return 1;
     }
 
     private static int getOwnPassesCallback(CommandContext<CommandSourceStack> context) {
         final var source = context.getSource();
+        final var server = source.getServer();
         final var player = Objects.requireNonNull(source.getPlayer());
-        final int amount = PassSavedData.getInstance(source.getServer()).getPasses(player.getUUID());
-
+        final int amount = SubLogServerContext.get(server).passes().get(player.getUUID());
         source.sendSuccess(() -> Component.translatable("sublog.success.get", player.getDisplayName(), amount), false);
         return 1;
     }
 
     private static int getPassesCallback(CommandContext<CommandSourceStack> context) {
         final var source = context.getSource();
+        final var server = source.getServer();
         final var name = StringArgumentType.getString(context, "player");
         final var uuid = UUIDUtil.createOfflinePlayerUUID(name);
-        final int amount = PassSavedData.getInstance(source.getServer()).getPasses(uuid);
-
+        final int amount = SubLogServerContext.get(server).passes().get(uuid);
         source.sendSuccess(() -> Component.translatable("sublog.success.get", name, amount), true);
         return 1;
     }
@@ -88,8 +91,7 @@ public class SubLogCommands {
         final int amount = IntegerArgumentType.getInteger(context, "amount");
         final var name = StringArgumentType.getString(context, "player");
         final var uuid = UUIDUtil.createOfflinePlayerUUID(name);
-
-        PassSavedData.getInstance(server).setPasses(uuid, amount);
+        SubLogServerContext.get(server).passes().set(uuid, amount);
         source.sendSuccess(() -> Component.translatable("sublog.success.set", name, amount), true);
         return 1;
     }

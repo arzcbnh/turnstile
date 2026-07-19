@@ -1,15 +1,15 @@
 package dev.arzcbnh.minecraft.sublog.mixin;
 
-import dev.arzcbnh.minecraft.sublog.ConnectionMixinAccessor;
+import dev.arzcbnh.minecraft.sublog.tweaker.ConnectionAuthStateHolder;
 import net.minecraft.network.Connection;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(Connection.class)
-public class ConnectionMixin implements ConnectionMixinAccessor {
+public class ConnectionMixin implements ConnectionAuthStateHolder {
     @Unique private String sublog$hostName;
 
-    @Unique private boolean sublog$isAuthenticated = false;
+    @Unique private boolean sublog$tokenAuthenticated = false;
 
     @Override
     public String sublog$getHostName() {
@@ -22,12 +22,12 @@ public class ConnectionMixin implements ConnectionMixinAccessor {
     }
 
     @Override
-    public boolean sublog$isAuthenticated() {
-        return this.sublog$isAuthenticated;
+    public boolean sublog$isTokenAuthenticated() {
+        return this.sublog$tokenAuthenticated;
     }
 
     @Override
-    public void sublog$setAuthenticated(boolean authenticated) {
-        this.sublog$isAuthenticated = authenticated;
+    public void sublog$setTokenAuthenticated(boolean authenticated) {
+        this.sublog$tokenAuthenticated = authenticated;
     }
 }
