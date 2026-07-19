@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "dev.arzcbnh.minecraft.sublog.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "ConnectionMixin",
+    "MinecraftServerMixin",
+    "PrepareSpawnTaskMixin",
+    "ServerHandshakePacketListenerImplMixin",
+    "ServerLoginPacketListenerImplMixin",
+    "ServerPlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
