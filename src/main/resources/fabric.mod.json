@@ -28,6 +28,7 @@
   "mixins": [
     "sublog.mixins.json"
   ],
+  "accessWidener": "sublog.classtweaker",
   "depends": {
     "fabricloader": "*",
     "fabric-api": "${fabric_version}",

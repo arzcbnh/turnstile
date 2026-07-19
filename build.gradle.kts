@@ -7,6 +7,7 @@ version = "0.1.0-beta.1"
 group = "dev.arzcbnh"
 
 loom {
+    accessWidenerPath = file("src/main/resources/sublog.classtweaker")
     splitEnvironmentSourceSets()
 
     mods {
@@ -41,6 +42,7 @@ dependencies {
 }
 
 tasks.processResources {
+    @Suppress("LocalVariableName")
     val fabric_version = libs.versions.fabric.api.map {
         val (major, minor) = it.substringBefore("+").split(".")
         ">=$major.$minor"

@@ -10,5 +10,6 @@ public class SubLogGameRules {
             .category(GameRuleCategory.MISC)
             .buildAndRegister(Identifier.fromNamespaceAndPath(SubLog.ID, "enable"));
 
-    public static void init() {}
+    @SuppressWarnings("EmptyMethod")
+    public static void register() {}
 }

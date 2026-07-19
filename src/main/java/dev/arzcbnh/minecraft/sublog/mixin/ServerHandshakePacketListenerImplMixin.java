@@ -1,6 +1,5 @@
 package dev.arzcbnh.minecraft.sublog.mixin;
 
-import dev.arzcbnh.minecraft.sublog.ConnectionMixinAccessor;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.handshake.ClientIntentionPacket;
 import net.minecraft.server.network.ServerHandshakePacketListenerImpl;
@@ -19,6 +18,6 @@ public class ServerHandshakePacketListenerImplMixin {
 
     @Inject(method = "beginLogin", at = @At("HEAD"))
     private void sublog$beginLogin(ClientIntentionPacket packet, boolean transfer, CallbackInfo ci) {
-        ((ConnectionMixinAccessor) this.connection).sublog$setHostName(packet.hostName());
+        this.connection.sublog$setHostName(packet.hostName());
     }
 }
