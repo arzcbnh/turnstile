@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "sublog",
+  "version": "${version}",
+  "name": "SubLog",
+  "description": "Authentication via subdomain tokens for offline servers.",
+  "authors": [
+    {
+      "name": "arzcbnh",
+      "contact": {
+        "email": "contact@arzcbnh.dev",
+        "homepage": "https://arzcbnh.dev"
+      }
+    }
+  ],
+  "contact": {
+    "issues": "https://github.com/arzcbnh/sublog/issues",
+    "sources": "https://github.com/arzcbnh/sublog"
+  },
+  "license": "GPL-3.0-only",
+  "icon": "assets/sublog/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "dev.arzcbnh.minecraft.sublog.SubLog"
+    ]
+  },
+  "mixins": [
+    "sublog.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "fabric-api": "${fabric_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}
