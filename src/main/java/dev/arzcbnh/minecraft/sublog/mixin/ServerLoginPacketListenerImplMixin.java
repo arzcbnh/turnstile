@@ -56,6 +56,6 @@ public abstract class ServerLoginPacketListenerImplMixin {
 
     @Unique private static String parseToken(String hostName) {
         final var index = Math.max(0, hostName.indexOf("."));
-        return hostName.substring(index);
+        return hostName.substring(0, index);
     }
 }
