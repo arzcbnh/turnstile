@@ -28,7 +28,7 @@ public class RegistrationService {
     public static void remindIfUnregistered(ServerPlayer player) {
         final var server = player.level().getServer();
 
-        if (!server.getGameRules().get(SubLogGameRules.ENABLED)) {
+        if (!server.getGameRules().get(SubLogGameRules.ENABLE)) {
             return;
         }
 
