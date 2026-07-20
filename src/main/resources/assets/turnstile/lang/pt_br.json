@@ -1,0 +1,12 @@
+{
+  "turnstile.chat.warn": "Você possui %1$s passes de uso único restantes. %2$s para gerar um token ou você poderá perder acesso ao servidor.",
+  "turnstile.chat.click": "Clique aqui",
+  "turnstile.enabled": "Habilitar Turnstile",
+  "turnstile.dialog.title": "Token gerado",
+  "turnstile.dialog.info.token": "Um token foi gerado com sucesso para sua conta. Use-o como subdomínio do endereço para conectar-se.",
+  "turnstile.dialog.info.url": "Um token foi gerado com sucesso para sua conta. Use o seguinte endereço para conectar-se:",
+  "turnstile.dialog.action": "Copiar",
+  "turnstile.success.revoke": "O token de %s foi revogado.",
+  "turnstile.success.get": "%s tem %s passes de uso único.",
+  "turnstile.success.set": "A quantidade de passes de uso único de %s foi definida como %s."
+}

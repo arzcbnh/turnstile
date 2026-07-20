@@ -1,0 +1,12 @@
+{
+  "turnstile.chat.warn": "You have %1$s one-time passes left. %2$s to generate a token or you may lose access to the server.",
+  "turnstile.chat.click": "Click here",
+  "turnstile.enabled": "Enable Turnstile",
+  "turnstile.dialog.title": "Token generated",
+  "turnstile.dialog.info.token": "A token has been successfully generated for your account. Use it as the address subdomain to connect.",
+  "turnstile.dialog.info.url": "A token has been successfully generated for your account. Use the following address to connect:",
+  "turnstile.dialog.action": "Copy to clipboard",
+  "turnstile.success.revoke": "Revoked %s's token.",
+  "turnstile.success.get": "%s has %s one-time passes.",
+  "turnstile.success.set": "Set %s's one-time passes to %s."
+}

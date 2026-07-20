@@ -8,4 +8,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "sublog"
+rootProject.name = "turnstile"

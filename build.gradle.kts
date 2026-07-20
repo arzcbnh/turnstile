@@ -7,11 +7,11 @@ version = "0.1.0-beta.1"
 group = "dev.arzcbnh"
 
 loom {
-    accessWidenerPath = file("src/main/resources/sublog.classtweaker")
+    accessWidenerPath = file("src/main/resources/turnstile.classtweaker")
     splitEnvironmentSourceSets()
 
     mods {
-        create("sublog") {
+        create("turnstile") {
             sourceSet(sourceSets.main.get())
         }
     }
@@ -61,8 +61,8 @@ tasks.processResources {
         )
     }
 
-    from("src/main/resources/assets/sublog/lang") {
-        into("data/sublog/lang")
+    from("src/main/resources/assets/turnstile/lang") {
+        into("data/turnstile/lang")
     }
 }
 
