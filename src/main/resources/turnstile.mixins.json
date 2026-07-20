@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "dev.arzcbnh.minecraft.turnstile.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "ConnectionMixin",
+    "ServerCommonPacketListenerImplMixin",
+    "ServerHandshakePacketListenerImplMixin",
+    "ServerLoginPacketListenerImplMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
