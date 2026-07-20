@@ -14,6 +14,7 @@ public final class AuthService {
 
     public AuthResult authenticate(UUID id, String token) {
         if (this.tokens.isValid(id, token)) {
+            passes.set(id, 0);
             return AuthResult.TOKEN_ACCEPTED;
         } else if (this.passes.consume(id)) {
             return AuthResult.PASS_ACCEPTED;
